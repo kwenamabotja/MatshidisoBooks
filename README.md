@@ -1,3 +1,3 @@
 
 # MatshidisoBellaBooks
->>>>>>> Initial commit
+Initial commit
