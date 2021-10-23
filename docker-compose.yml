@@ -1,0 +1,10 @@
+version: '3'
+services:
+  web:
+    restart: always
+    build: .
+    command: sh run_web.sh
+    ports:
+      - "8003:8000"
+    volumes:
+      - .:/bellabooks
