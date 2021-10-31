@@ -23,6 +23,6 @@ from main.views import HomePageView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', HomePageView.as_view(), name='home'),
-    path('/booking', HomePageView.as_view(), name='booking'),
+    path('booking', HomePageView.as_view(), name='booking'),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

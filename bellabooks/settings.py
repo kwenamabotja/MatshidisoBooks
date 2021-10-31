@@ -130,3 +130,9 @@ STATICFILES_DIRS = (
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# env = os.environ
+# env.read_env(env.str('ENV_PATH', os.path.join(BASE_DIR, '.private.env')))
+# SENDGRID_URL = env('SENDGRID_URL')
+# print(SENDGRID_URL)
