@@ -1,10 +1,10 @@
 import logging
 
 from django.shortcuts import render
-
 # Create your views here.
 from django.views.generic import TemplateView
 
+from main.email_utils import EmailUtil
 from main.models import Contact
 
 logger = logging.getLogger(__name__)
@@ -32,6 +32,9 @@ class HomePageView(TemplateView):
                 message=message
             )
             logger.info(f"{contact} Created!")
+            u = EmailUtil()
+            u.send_contact_email(contact)
         else:
             logger.info("The form is invalid")
         return render(request=request, template_name=self.template_name)
+
