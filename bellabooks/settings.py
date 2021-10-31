@@ -13,6 +13,8 @@ import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+from dotenv import load_dotenv
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -133,6 +135,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # env = os.environ
-# env.read_env(env.str('ENV_PATH', os.path.join(BASE_DIR, '.private.env')))
-# SENDGRID_URL = env('SENDGRID_URL')
-# print(SENDGRID_URL)
+# env.read_env(env.str('ENV_PATH', os.path.join(BASE_DIR, '..env')))
+
+
+load_dotenv()
+SENDGRID_URL = os.getenv('SENDGRID_URL')
+SENDGRID_TOKEN = os.getenv('SENDGRID_TOKEN')
+print(SENDGRID_URL)
