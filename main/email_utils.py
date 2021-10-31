@@ -1,6 +1,8 @@
 import json
 import logging
 
+import requests
+
 from bellabooks.settings import SENDGRID_TOKEN, SENDGRID_URL
 
 logger = logging.getLogger(__name__)
@@ -12,6 +14,7 @@ class EmailUtil(object):
         pass
 
     def send_contact_email(self, contact):
+        logger.info("## send contact email ##")
         try:
             headers = {
                 "Authorization": f"Bearer {SENDGRID_TOKEN}",
@@ -42,7 +45,7 @@ class EmailUtil(object):
                             <h1>Contact Added!</h1>
                             <table>
                             <tr><td>Email</td><td>Mobile number</td><td>Name</td></tr>
-                            <tr><td>{contact.email}</td><td>{contact.mobile_number}r</td>
+                            <tr><td>{contact.email}</td><td>{contact.mobile_number}</td>
                             <td>{contact.name}</td></tr>
                             </table>
                             <h2>Message</h2>
@@ -56,5 +59,6 @@ class EmailUtil(object):
             r = requests.post(url=SENDGRID_URL,
                               headers=headers,
                               data=json.dumps(data))
+            logger.info(r)
         except Exception as e:
             logger.error(e)

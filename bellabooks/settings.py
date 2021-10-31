@@ -141,4 +141,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 load_dotenv()
 SENDGRID_URL = os.getenv('SENDGRID_URL')
 SENDGRID_TOKEN = os.getenv('SENDGRID_TOKEN')
-print(SENDGRID_URL)
+# print(SENDGRID_URL)
