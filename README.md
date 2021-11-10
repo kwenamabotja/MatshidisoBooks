@@ -4,6 +4,10 @@ Initial commit
 
 ## Adding Django
 
+### Security
+
+`manage.py check --deploy`
+
 ## Deployment
 
 - Docker
