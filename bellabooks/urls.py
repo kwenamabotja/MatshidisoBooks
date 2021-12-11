@@ -18,11 +18,13 @@ from django.conf.urls.static import static
 from django.urls import path
 
 from bellabooks import settings
-from main.views import HomePageView
+from main.views import HomePageView, PaymentView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', HomePageView.as_view(), name='home'),
     path('booking', HomePageView.as_view(), name='booking'),
+    path('checkout', HomePageView.as_view(), name='checkout'),
+    path('pay', PaymentView.as_view(), name='pay'),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

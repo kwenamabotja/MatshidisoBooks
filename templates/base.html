@@ -11,7 +11,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
 
-    <title>Bella Books</title>
+    <title>{{ title|default:"Bella Books" }}</title>
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
@@ -45,7 +45,7 @@
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="home.html" class="logo">Matshidiso Bella<em> Books</em></a>
+                        <a href="{% url 'home' %}" class="logo">Matshidiso Bella<em> Books</em></a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
@@ -66,7 +66,6 @@
         </div>
     </header>
     <!-- ***** Header Area End ***** -->
-
     {% block content %}
 
 

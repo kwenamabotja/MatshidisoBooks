@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
@@ -22,3 +23,12 @@ class Contact(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.email} - {self.mobile_number} - {self.message}"
+
+
+class Order(models.Model):
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    paid = models.BooleanField()
+    delivered = models.BooleanField()
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

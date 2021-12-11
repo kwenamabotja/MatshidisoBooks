@@ -1,0 +1,28 @@
+{% extends "base.html"%}
+
+{% load static %}
+
+{% block content %}
+
+    <!-- ***** Contact Us Area Starts ***** -->
+    <section class="section" id="contact-us">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="section-heading">
+                        <h2>Pay <em>with Payfast</em></h2>
+                        {%  if message %}
+                            <p>{{ message }}</p>
+                        {% endif %}
+                        <div class="contact-form">
+                        {{ payfast_button | safe }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Contact Us Area Ends ***** -->
+
+{% endblock %}

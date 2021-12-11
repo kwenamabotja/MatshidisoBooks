@@ -2,10 +2,12 @@ import logging
 
 from django.shortcuts import render
 # Create your views here.
+from django.urls import reverse
 from django.views.generic import TemplateView
 
 from main.email_utils import EmailUtil
 from main.models import Contact
+from main.payfast_utils import PayFastUtil
 
 logger = logging.getLogger(__name__)
 
@@ -38,3 +40,47 @@ class HomePageView(TemplateView):
             logger.info("The form is invalid")
         return render(request=request, template_name=self.template_name)
 
+
+class PaymentView(TemplateView):
+    """Payment page."""
+    template_name = "payfast.html"
+
+    # def get_context_data(self, **kwargs):
+    #     context = super(PaymentView, self).get_context_data(**kwargs)
+    #
+    #     return context
+
+    def get(self, request):
+        context = dict()
+        action = request.GET.get("action", "")
+        if action == "return":
+            print("success")
+            context['title'] = "Payment successful"
+            context['message'] = "Payment successful"
+        elif action == "notify":
+            print("notify")
+        elif action == "cancel":
+            print("cancel")
+            context['title'] = "Payment cancelled"
+            context['message'] = "Payment cancelled"
+        else:
+            util = PayFastUtil()
+            buyer = {
+                "first_name": "Toto",
+                "last_name": "Tutu",
+                "email": "example@gmail.com",
+            }
+            context['current_url'] = reverse('pay')
+            context["payfast_button"] = util.generate_form(
+                buyer=buyer,
+                order=None,
+                url=f"{request.build_absolute_uri(reverse('pay'))}",
+                amount=500.00
+            )
+            context['title'] = "Pay with Payfast"
+            print(context)
+        return render(
+            request=request,
+            template_name=self.template_name,
+            context=context
+        )

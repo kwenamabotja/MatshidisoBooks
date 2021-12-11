@@ -133,7 +133,7 @@ STATICFILES_DIRS = (
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
+VAT= 0.15
 # env = os.environ
 # env.read_env(env.str('ENV_PATH', os.path.join(BASE_DIR, '..env')))
 
@@ -141,4 +141,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 load_dotenv()
 SENDGRID_URL = os.getenv('SENDGRID_URL')
 SENDGRID_TOKEN = os.getenv('SENDGRID_TOKEN')
+
+PAYFAST_BASE_URL = os.getenv('PAYFAST_BASE_URL')
+PAYFAST_MERCHANT_ID = os.getenv('PAYFAST_MERCHANT_ID')
+PAYFAST_MERCHANT_KEY = os.getenv('PAYFAST_MERCHANT_KEY')
 # print(SENDGRID_URL)
+print(f"Merchant ID: {PAYFAST_MERCHANT_ID}.")
