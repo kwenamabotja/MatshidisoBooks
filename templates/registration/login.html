@@ -1,0 +1,29 @@
+{% extends "base.html"%}
+
+{% load static %}
+
+{% block content %}
+
+    <!-- ***** Contact Us Area Starts ***** -->
+    <section class="section" id="contact-us">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="section-heading">
+                        <h2>Login</h2>
+                        <form action="{% url 'login' %}" method="post">
+                            {% csrf_token %}
+                            <input name="username" type="text">
+                            <input name="password" type="password">
+                            <input type="submit" value="Submit">
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Contact Us Area Ends ***** -->
+
+{% endblock %}
