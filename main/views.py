@@ -1,13 +1,14 @@
 import logging
 
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 # Create your views here.
 from django.urls import reverse
 from django.views.generic import TemplateView
 
-from main.email_utils import EmailUtil
 from main.models import Contact
-from main.payfast_utils import PayFastUtil
+from main.utils.email_utils import EmailUtil
+from main.utils.payfast_utils import PayFastUtil
 
 logger = logging.getLogger(__name__)
 
@@ -41,7 +42,7 @@ class HomePageView(TemplateView):
         return render(request=request, template_name=self.template_name)
 
 
-class PaymentView(TemplateView):
+class PaymentView(LoginRequiredMixin, TemplateView):
     """Payment page."""
     template_name = "payfast.html"
 
@@ -84,3 +85,4 @@ class PaymentView(TemplateView):
             template_name=self.template_name,
             context=context
         )
+

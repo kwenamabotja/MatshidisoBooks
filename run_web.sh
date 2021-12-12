@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# run tests first
+python manage.py test
+
 echo yes | python manage.py collectstatic
 
 sleep 5
