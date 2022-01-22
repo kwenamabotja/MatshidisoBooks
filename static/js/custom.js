@@ -67,11 +67,11 @@
 	            $(this).removeClass('active');
 	        })
 	        $(this).addClass('active');
-	      
-	        var target = this.hash,
-	        menu = target;
-	       	var target = $(this.hash);
-	        $('html, body').stop().animate({
+
+			let target = this.hash,
+				menu = target;
+			target = $(this.hash);
+			$('html, body').stop().animate({
 	            scrollTop: (target.offset().top) + 1
 	        }, 500, 'swing', function () {
 	            window.location.hash = target;
@@ -81,10 +81,10 @@
 	});
 
 	function onScroll(event){
-	    var scrollPos = $(document).scrollTop();
-	    $('.nav a').each(function () {
-	        var currLink = $(this);
-	        var refElement = $(currLink.attr("href"));
+		const scrollPos = $(document).scrollTop();
+		$('.nav a').each(function () {
+	        let currLink = $(this);
+	        let refElement = $(currLink.attr("href"));
 	        if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
 	            $('.nav ul li a').removeClass("active");
 	            currLink.addClass("active");

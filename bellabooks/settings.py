@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-4r8kl$(&*t_i@g*1qx8x2ugx6@m0tl-x&t)^o$8e2k&tp-v37&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
 
 # Application definition
 
@@ -143,4 +143,11 @@ PAYFAST_BASE_URL = os.getenv('PAYFAST_BASE_URL')
 PAYFAST_MERCHANT_ID = os.getenv('PAYFAST_MERCHANT_ID')
 PAYFAST_MERCHANT_KEY = os.getenv('PAYFAST_MERCHANT_KEY')
 # print(SENDGRID_URL)
-print(f"Merchant ID: {PAYFAST_MERCHANT_ID}.")
+# print(f"Merchant ID: {PAYFAST_MERCHANT_ID}.")
+# SECURITY
+SECURE_HSTS_SECONDS = True
+SESSION_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
+CSRF_COOKIE_SECURE = True
+SECURE_HSTS_PRELOAD = True
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
