@@ -5,6 +5,6 @@ services:
     build: .
     command: sh run_web.sh
     ports:
-      - "8003:8000"
+      - "8017:8000"
     volumes:
       - .:/bellabooks
