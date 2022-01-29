@@ -19,13 +19,13 @@ from django.urls import path, include
 
 from bellabooks import settings
 from main import core_views
-from main.views import HomePageView, PaymentView
+from main.views import HomePageView, PaymentView, OrderBookView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
     path('', HomePageView.as_view(), name='home'),
-    path('booking', HomePageView.as_view(), name='booking'),
+    path('booking', OrderBookView.as_view(), name='booking'),
     path('checkout', HomePageView.as_view(), name='checkout'),
     path('pay', PaymentView.as_view(), name='pay'),
 

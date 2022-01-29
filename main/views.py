@@ -86,3 +86,12 @@ class PaymentView(LoginRequiredMixin, TemplateView):
             context=context
         )
 
+
+class OrderBookView(TemplateView):
+    """Home page."""
+    template_name = "order.html"
+
+    # def get_context_data(self, **kwargs):
+    #     context = super(OrderBookView, self).get_context_data(**kwargs)
+    #     return context
+
