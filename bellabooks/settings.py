@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
+import socket
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -26,7 +27,11 @@ SECRET_KEY = 'django-insecure-4r8kl$(&*t_i@g*1qx8x2ugx6@m0tl-x&t)^o$8e2k&tp-v37&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost", "178.128.171.157"]
+ALLOWED_HOSTS = [
+    "127.0.0.1",
+    "localhost",
+    "178.128.171.157",
+]
 
 # Application definition
 
@@ -152,3 +157,11 @@ PAYFAST_MERCHANT_KEY = os.getenv('PAYFAST_MERCHANT_KEY')
 # CSRF_COOKIE_SECURE = True
 # SECURE_HSTS_PRELOAD = True
 # SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+
+hostname = socket. gethostname()
+local_ip = socket. gethostbyname(hostname)
+print(f"Hostname: {hostname}\nIP: {local_ip}")
+
+if local_ip == "178.128.171.157":
+    DEBUG = False
+    print("Deploying to staging...")

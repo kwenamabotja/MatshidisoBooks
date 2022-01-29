@@ -6,6 +6,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 from bellabooks.settings import VAT
+from main.enums import ProvinceType
 
 
 class Book(models.Model):
@@ -30,9 +31,19 @@ class Contact(models.Model):
         return f"{self.name} - {self.email} - {self.mobile_number} - {self.message}"
 
 
+class Address(models.Model):
+    line_1 = models.CharField(max_length=30)
+    line_2 = models.CharField(max_length=30)
+    suburb = models.CharField(max_length=30)
+    city = models.CharField(max_length=30)
+    # province = models.Choices(ProvinceType)
+    postal_code = models.PositiveIntegerField()
+
+
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     paid = models.BooleanField(default=False)
+    payment_reference = models.CharField(max_length=50, blank=True, null=True)
     delivered = models.BooleanField(default=False)
 
     created_at = models.DateTimeField(auto_now_add=True)
