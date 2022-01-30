@@ -1,6 +1,6 @@
 {% load static %}
 
-<!--<!DOCTYPE html>-->
+<!DOCTYPE html>
 <html lang="en">
 
   <head>
@@ -52,7 +52,6 @@
                             <li class="scroll-to-section"><a href="{% url 'home' %}" class="active">Home</a></li>
                             <li class="scroll-to-section"><a href="#features">About</a></li>
                             <li class="scroll-to-section"><a href="#our-classes">Books</a></li>
-<!--                            <li class="scroll-to-section"><a href="#schedule">book club</a></li>-->
                             <li class="scroll-to-section"><a href="#contact-us">Contact</a></li>
 <!--                            {% if not user.is_authenticated %}-->
 <!--                                <li class="main-button"><a href="{% url 'signup' %}">Sign Up</a></li>-->
@@ -78,7 +77,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; 2022 Bella Books</p>
+                    <p>Copyright &copy; {% now "Y" %} Bella Books</p>
                 </div>
             </div>
         </div>
