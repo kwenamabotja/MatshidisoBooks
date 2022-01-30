@@ -60,7 +60,7 @@
                 <div class="col-lg-6 offset-lg-3">
                     <div class="section-heading">
                         <h2>Our <em>Books</em></h2>
-                        <img src="../static/images/line-dec.png" alt="">
+                        <img src="{% static 'images/line-dec.png' %}" alt="">
 <!--                        <p>Nunc urna sem, laoreet ut metus id, aliquet consequat magna. Sed viverra ipsum dolor, ultricies fermentum massa consequat eu.</p>-->
                     </div>
                 </div>
@@ -88,10 +88,14 @@
         </div>
     </section>
     <!-- ***** Our Classes End ***** -->
-    <section class="section" id="our-classes">
+    <section class="section">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="section-heading">
+                        <h2>Contact <em>Us</em></h2>
+                        <img src="{% static 'images/line-dec.png' %}" alt="">
+                    </div>
                     <div class="contact-form">
                         <form id="contact" action="{% url 'home' %}" method="post">
                             {% csrf_token %}

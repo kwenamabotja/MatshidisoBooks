@@ -6,6 +6,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.views.generic import TemplateView
 
+from main.forms import OrderBookForm
 from main.models import Contact, Book
 from main.utils.email_utils import EmailUtil
 from main.utils.payfast_utils import PayFastUtil
@@ -92,7 +93,11 @@ class OrderBookView(TemplateView):
     """Home page."""
     template_name = "order.html"
 
-    # def get_context_data(self, **kwargs):
-    #     context = super(OrderBookView, self).get_context_data(**kwargs)
-    #     return context
+    def get_context_data(self, **kwargs):
+        context = super(OrderBookView, self).get_context_data(**kwargs)
+        context["form"] = OrderBookForm()
+        return context
+
+    # def get(self, request):
+    #     return render(request=request, template_name=self.template_name)
 
