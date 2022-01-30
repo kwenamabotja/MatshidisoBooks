@@ -20,3 +20,11 @@ class SignUpForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('first_name', 'last_name', 'email', 'password1', 'password2', )
+
+
+class OrderBookForm(forms.Form):
+    email = forms.EmailField(
+        max_length=254,
+        help_text='Required. Inform a valid email address.'
+    )
+    # book-id, mobile number, address, banking details

@@ -158,10 +158,10 @@ PAYFAST_MERCHANT_KEY = os.getenv('PAYFAST_MERCHANT_KEY')
 # SECURE_HSTS_PRELOAD = True
 # SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
-hostname = socket. gethostname()
-local_ip = socket. gethostbyname(hostname)
-print(f"Hostname: {hostname}\nIP: {local_ip}")
-
-if local_ip == "178.128.171.157":
-    DEBUG = False
-    print("Deploying to staging...")
+# hostname = socket. gethostname()
+# local_ip = socket. gethostbyname(hostname)
+# print(f"Hostname: {hostname}\nIP: {local_ip}")
+#
+# if local_ip == "178.128.171.157":
+#     DEBUG = False
+#     print("Deploying to staging...")

@@ -6,7 +6,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.views.generic import TemplateView
 
-from main.models import Contact
+from main.models import Contact, Book
 from main.utils.email_utils import EmailUtil
 from main.utils.payfast_utils import PayFastUtil
 
@@ -19,6 +19,7 @@ class HomePageView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(HomePageView, self).get_context_data(**kwargs)
+        context["books"] = Book.objects.all()
         return context
 
     def post(self, request):
