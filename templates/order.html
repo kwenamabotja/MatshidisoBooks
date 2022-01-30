@@ -3,51 +3,46 @@
 {% load static %}
 
 {% block content %}
+<section class="section" id="contact-us">
+    <div class="container-fluid">
 
-    <!-- ***** Main Banner Area Start ***** -->
-    <div class="main-banner" id="top">
+        <div class="col-lg-6 col-md-6 col-xs-12">
+            <div class="contact-form">
+                <form id="contact" action="{% url 'home' %}" method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <fieldset>
+                                <input name="name" type="text" id="name" placeholder="Your Name*" required="">
+                            </fieldset>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <fieldset>
+                                <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email*" required="">
+                            </fieldset>
+                        </div>
 
-        <div class="video-overlay header-text">
-            <div class="caption">
-<!--                work harder, get stronger</h6>-->
-                <h2>Matshidiso Bella<em>Books</em></h2>
-                <div class="main-button scroll-to-section">
-                    <a href="#features">Order</a>
-                </div>
+                        <div class="col-md-12 col-sm-12">
+                            <fieldset>
+                                <input name="mobile_number" type="text" id="Phone Number" placeholder="Your Phone Number*" required="">
+                            </fieldset>
+                        </div>
+                        <div class="col-lg-12">
+                            <fieldset>
+                                <textarea name="message" rows="6" id="message" placeholder="Message" required=""></textarea>
+                            </fieldset>
+                        </div>
+                        <div class="col-lg-12">
+                            <fieldset>
+                                <button type="submit" id="form-submit" class="main-button">Place Order</button>
+                            </fieldset>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-    <!-- ***** Main Banner Area End ***** -->
+</section>
 
-    <!-- ***** Features Item Start ***** -->
-    <section class="section" id="features">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 offset-lg-3">
-                    <div class="section-heading">
-                        <h2>About <em>Matshidiso Bella</em></h2>
-                        <img src="{% static 'images/line-dec.png' %}" alt="waves">
-                        <p>Matshidiso Bella born Matshidiso Bella Makoea is an author hailing from Ga-Makweya,
-                            a laid back village in Moletjie, Limpopo.
-                            She writes sexy & cute books for young adults & teens centered around romance.
-                            Her books are easy to get lost into as they take you on an adventure out of this ordinary world. Her works includes her infamous The Pierce brother series: The cleaner, Breathe Again & Reckless behavior. One of her books The Swan was once a topic of discussion for three months on the famous Thobela FM radio station.
-                            When she's not writing, she's either reading, editing books for other authors or watching sexy vampires on TV. She started writing at age of 13 and has never looked back.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <ul class="features-items">
-                        <li class="feature-item">
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-6">
-                    <ul class="features-items">
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ***** Features Item End ***** -->
 
 {% endblock %}
