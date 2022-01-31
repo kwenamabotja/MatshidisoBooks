@@ -167,5 +167,5 @@ PAYFAST_MERCHANT_KEY = os.getenv('PAYFAST_MERCHANT_KEY')
 #     print("Deploying to staging...")
 
 # ADMIN_EMAIL = "kwena@outlook.com"
-ADMIN_EMAIL = "ptchankue@gmail.com"
+ADMIN_EMAIL = "koena93@gmail.com"
 OWNER_EMAIL = "septembernosivuno@gmail.com"
