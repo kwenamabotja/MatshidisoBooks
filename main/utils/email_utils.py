@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 class EmailUtil(object):
 
     def __init__(self):
-        pass
+        logger.info("## EmailUtil ##")
 
     def send_generic_email(self):
         pass
@@ -69,6 +69,7 @@ class EmailUtil(object):
 
     def send_order_email(self, _to, _from, _subject, _message):
         logger.info("## send order email ##")
+        print("## send order email ##")
         try:
             headers = {
                 "Authorization": f"Bearer {SENDGRID_TOKEN}",
@@ -98,5 +99,6 @@ class EmailUtil(object):
                               headers=headers,
                               data=json.dumps(data))
             logger.info(r)
+            print(r.json())
         except Exception as e:
             logger.error(e)

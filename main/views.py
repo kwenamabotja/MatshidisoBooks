@@ -108,6 +108,7 @@ class OrderBookView(TemplateView):
         mobile_number = request.POST.get("mobile_number")
         delivery_address = request.POST.get("delivery_address")
         print(f"{name}, {email}, {mobile_number}, {delivery_address}")
+        context = self.get_context_data()
         if name and email and mobile_number and delivery_address:
             print(f"{name}, {email}, {mobile_number}, {delivery_address}")
             # order = Order.objects.create(
@@ -119,17 +120,23 @@ class OrderBookView(TemplateView):
                 _to=email,
                 _from=settings.ADMIN_EMAIL,
                 _subject="Book Order",
-                _message=f"""Thank you for ordering the book \"The Swan\"
-                    Your email is: {email}
-                    Your delivery address is: {delivery_address}
+                _message=f"""Thank you for ordering the book \"The Swan\"<br/><br/>"
+                    Your email is: {email} <br/>
+                    Your delivery address is: {delivery_address}<br/><br/>
                     
-                    Banking details: 
-                        Account number: 200023456
-                        Branch code: 23232
-                    We will contact you soon!
+                    Banking details: <br/>
+                        Account number: 200023456<br/>
+                        Branch code: 23232<br/>
+                    We will contact you soon!<br/>
                 """
             )
+            context["success"] = True
         else:
+            context["success"] = False
             print("******** invalid form")
 
-        return render(request=request, template_name=self.template_name)
+        return render(
+            request=request,
+            template_name=self.template_name,
+            context=context,
+        )
