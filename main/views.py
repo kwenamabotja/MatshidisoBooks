@@ -120,13 +120,13 @@ class OrderBookView(TemplateView):
                 _to=email,
                 _from=settings.ADMIN_EMAIL,
                 _subject=f"Book Order for {name}",
-                _message=f"""Thank you for ordering the book \"The Swan\"<br/><br/>"
+                _message=f"""Thank you for ordering the book \"The Swan\"<br/><br/>
                     Your email is: {email} <br/>
                     Your delivery address is: {delivery_address}<br/><br/>
                     
                     <b>Banking details:</b> <br/>
                         Account number: 200023456<br/>
-                        Branch code: 23232<br/>
+                        Branch code: 23232<br/><br/>
                     We will contact you soon!<br/>
                 """
             )
