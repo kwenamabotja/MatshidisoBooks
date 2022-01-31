@@ -103,6 +103,7 @@ class OrderBookView(TemplateView):
     #     return render(request=request, template_name=self.template_name)
 
     def post(self, request):
+        print("** POST **")
         name = request.POST.get("name")
         email = request.POST.get("email")
         mobile_number = request.POST.get("mobile_number")
@@ -118,12 +119,12 @@ class OrderBookView(TemplateView):
             u.send_order_email(
                 _to=email,
                 _from=settings.ADMIN_EMAIL,
-                _subject="Book Order",
+                _subject=f"Book Order for {name}",
                 _message=f"""Thank you for ordering the book \"The Swan\"<br/><br/>"
                     Your email is: {email} <br/>
                     Your delivery address is: {delivery_address}<br/><br/>
                     
-                    Banking details: <br/>
+                    <b>Banking details:</b> <br/>
                         Account number: 200023456<br/>
                         Branch code: 23232<br/>
                     We will contact you soon!<br/>

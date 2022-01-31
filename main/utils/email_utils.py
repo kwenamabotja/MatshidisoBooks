@@ -96,10 +96,11 @@ class EmailUtil(object):
                     }
                 ]
             }
+            print(json.dumps(data))
             r = requests.post(url=SENDGRID_URL,
                               headers=headers,
                               data=json.dumps(data))
             logger.info(r)
-            print(r.json())
+            print(r)
         except Exception as e:
             logger.error(e)
