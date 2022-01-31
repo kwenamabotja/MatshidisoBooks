@@ -6,8 +6,9 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.views.generic import TemplateView
 
+from bellabooks import settings
 from main.forms import OrderBookForm
-from main.models import Contact, Book
+from main.models import Contact, Book, Order
 from main.utils.email_utils import EmailUtil
 from main.utils.payfast_utils import PayFastUtil
 
@@ -101,3 +102,41 @@ class OrderBookView(TemplateView):
     # def get(self, request):
     #     return render(request=request, template_name=self.template_name)
 
+    def post(self, request):
+        print("** POST **")
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        mobile_number = request.POST.get("mobile_number")
+        delivery_address = request.POST.get("delivery_address")
+        context = self.get_context_data()
+        if name and email and mobile_number and delivery_address:
+            print(f"{name}, {email}, {mobile_number}, {delivery_address}")
+            # order = Order.objects.create(
+            #     name=name,
+            #     email=email,
+            # )
+            u = EmailUtil()
+            u.send_order_email(
+                _to=email,
+                _from=settings.ADMIN_EMAIL,
+                _subject=f"Book Order for {name}",
+                _message=f"""Thank you for ordering the book \"The Swan\"<br/><br/>
+                    Your email is: {email} <br/>
+                    Your delivery address is: {delivery_address}<br/><br/>
+                    
+                    <b>Banking details:</b> <br/>
+                        Account number: 200023456<br/>
+                        Branch code: 23232<br/><br/>
+                    We will contact you soon!<br/>
+                """
+            )
+            context["success"] = True
+        else:
+            context["success"] = False
+            print("******** invalid form")
+
+        return render(
+            request=request,
+            template_name=self.template_name,
+            context=context,
+        )

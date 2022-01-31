@@ -23,6 +23,7 @@ class SignUpForm(UserCreationForm):
 
 
 class OrderBookForm(forms.Form):
+    name = forms.CharField(max_length=100)
     email = forms.EmailField(
         max_length=254,
         help_text='Required. Inform a valid email address.'

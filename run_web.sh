@@ -3,6 +3,8 @@
 # run tests first
 python manage.py test
 
+pip install -r requirements.txt
+
 echo yes | python manage.py collectstatic
 
 sleep 5

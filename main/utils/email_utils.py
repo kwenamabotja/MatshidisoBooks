@@ -3,6 +3,7 @@ import logging
 
 import requests
 
+from bellabooks import settings
 from bellabooks.settings import SENDGRID_TOKEN, SENDGRID_URL
 
 logger = logging.getLogger(__name__)
@@ -11,6 +12,10 @@ logger = logging.getLogger(__name__)
 class EmailUtil(object):
 
     def __init__(self):
+        logger.info("## EmailUtil ##")
+        print("*** init EmailUtil()")
+
+    def send_generic_email(self):
         pass
 
     def send_contact_email(self, contact):
@@ -23,10 +28,10 @@ class EmailUtil(object):
             data = {
                 "personalizations": [
                     {
-                        "to": [{"email": "ptchankue@gmail.com"}]
+                        "to": [{"email": settings.OWNER_EMAIL}]
                     }
                 ],
-                "from": {"email": "Bella Books <ptchankue@gmail.com>"},
+                "from": {"email": f"Bella Books Contact <{settings.ADMIN_EMAIL}>"},
                 "subject": f"Bella Books Contact Form: {contact.email}",
 
                 "content": [
@@ -60,5 +65,42 @@ class EmailUtil(object):
                               headers=headers,
                               data=json.dumps(data))
             logger.info(r)
+        except Exception as e:
+            logger.error(e)
+
+    def send_order_email(self, _to, _from, _subject, _message):
+        logger.info("## send order email ##")
+        print("## send order email ##")
+        try:
+            headers = {
+                "Authorization": f"Bearer {SENDGRID_TOKEN}",
+                "Content-Type": "application/json"
+            }
+            data = {
+                "personalizations": [
+                    {
+                        "to": [{"email": _to}],
+                        "bcc": [{"email": settings.OWNER_EMAIL}]
+                    }
+                ],
+                "from": {"email": f"Bella Books <{_from}>"},
+                "subject": _subject,
+                "content": [
+                    {
+                        "type": "text/plain",
+                        "value": _message
+                    },
+                    {
+                        "type": "text/html",
+                        "value": _message
+                    }
+                ]
+            }
+            print(json.dumps(data))
+            r = requests.post(url=SENDGRID_URL,
+                              headers=headers,
+                              data=json.dumps(data))
+            logger.info(r)
+            print(r)
         except Exception as e:
             logger.error(e)

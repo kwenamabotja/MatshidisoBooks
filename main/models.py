@@ -18,6 +18,9 @@ class Book(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return self.title
+
 
 class Contact(models.Model):
     name = models.CharField(max_length=100)
@@ -40,11 +43,15 @@ class Address(models.Model):
     # province = models.Choices(ProvinceType)
     postal_code = models.PositiveIntegerField()
 
+    def __str__(self):
+        return f"{self.line_1}, {self.line_2}, {self.suburb}, {self.city}"
+
 
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     paid = models.BooleanField(default=False)
     payment_reference = models.CharField(max_length=50, blank=True, null=True)
+    delivery_address = models.CharField(max_length=150, blank=True, null=True)
     delivered = models.BooleanField(default=False)
 
     created_at = models.DateTimeField(auto_now_add=True)
