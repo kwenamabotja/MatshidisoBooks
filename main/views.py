@@ -107,7 +107,6 @@ class OrderBookView(TemplateView):
         email = request.POST.get("email")
         mobile_number = request.POST.get("mobile_number")
         delivery_address = request.POST.get("delivery_address")
-        print(f"{name}, {email}, {mobile_number}, {delivery_address}")
         context = self.get_context_data()
         if name and email and mobile_number and delivery_address:
             print(f"{name}, {email}, {mobile_number}, {delivery_address}")

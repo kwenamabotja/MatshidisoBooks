@@ -13,6 +13,7 @@ class EmailUtil(object):
 
     def __init__(self):
         logger.info("## EmailUtil ##")
+        print("*** init EmailUtil()")
 
     def send_generic_email(self):
         pass
