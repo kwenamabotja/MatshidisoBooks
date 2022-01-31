@@ -28,4 +28,10 @@ class OrderBookForm(forms.Form):
         max_length=254,
         help_text='Required. Inform a valid email address.'
     )
+    address = forms.CharField(required=True, widget=forms.TextInput(
+        attrs={
+            'style': 'width: 400px',
+            'class': 'basicAutoComplete',
+            'data-url': "/api/addresses/"
+        }))
     # book-id, mobile number, address, banking details

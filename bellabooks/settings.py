@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    "rest_framework",
+
     'main',
 ]
 
@@ -144,6 +146,9 @@ load_dotenv()
 SENDGRID_URL = os.getenv('SENDGRID_URL')
 SENDGRID_TOKEN = os.getenv('SENDGRID_TOKEN')
 
+GOOGLE_MAP_KEY = os.getenv('GOOGLE_MAP_KEY')
+GOOGLE_MAP_BASE_URL = os.getenv('GOOGLE_MAP_BASE_URL')
+
 PAYFAST_BASE_URL = os.getenv('PAYFAST_BASE_URL')
 PAYFAST_MERCHANT_ID = os.getenv('PAYFAST_MERCHANT_ID')
 PAYFAST_MERCHANT_KEY = os.getenv('PAYFAST_MERCHANT_KEY')
@@ -165,6 +170,13 @@ PAYFAST_MERCHANT_KEY = os.getenv('PAYFAST_MERCHANT_KEY')
 # if local_ip == "178.128.171.157":
 #     DEBUG = False
 #     print("Deploying to staging...")
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.BasicAuthentication",
+    ],
+    # "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.IsAuthenticated"],
+}
 
 # ADMIN_EMAIL = "kwena@outlook.com"
 ADMIN_EMAIL = "koena93@gmail.com"
