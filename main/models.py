@@ -45,6 +45,7 @@ class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     paid = models.BooleanField(default=False)
     payment_reference = models.CharField(max_length=50, blank=True, null=True)
+    delivery_address = models.CharField(max_length=150, blank=True, null=True)
     delivered = models.BooleanField(default=False)
 
     created_at = models.DateTimeField(auto_now_add=True)

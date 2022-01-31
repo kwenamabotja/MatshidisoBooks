@@ -3,6 +3,7 @@ import logging
 
 import requests
 
+from bellabooks import settings
 from bellabooks.settings import SENDGRID_TOKEN, SENDGRID_URL
 
 logger = logging.getLogger(__name__)
@@ -11,6 +12,9 @@ logger = logging.getLogger(__name__)
 class EmailUtil(object):
 
     def __init__(self):
+        pass
+
+    def send_generic_email(self):
         pass
 
     def send_contact_email(self, contact):
@@ -53,6 +57,40 @@ class EmailUtil(object):
                         </body>
                     </html>
                     """
+                    }
+                ]
+            }
+            r = requests.post(url=SENDGRID_URL,
+                              headers=headers,
+                              data=json.dumps(data))
+            logger.info(r)
+        except Exception as e:
+            logger.error(e)
+
+    def send_order_email(self, _to, _from, _subject, _message):
+        logger.info("## send order email ##")
+        try:
+            headers = {
+                "Authorization": f"Bearer {SENDGRID_TOKEN}",
+                "Content-Type": "application/json"
+            }
+            data = {
+                "personalizations": [
+                    {
+                        "to": [{"email": _to}],
+                        "bcc": [{"email": settings.OWNER_EMAIL}]
+                    }
+                ],
+                "from": {"email": f"Bella Books <{_from}>"},
+                "subject": _subject,
+                "content": [
+                    {
+                        "type": "text/plain",
+                        "value": _message
+                    },
+                    {
+                        "type": "text/html",
+                        "value": _message
                     }
                 ]
             }

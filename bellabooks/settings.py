@@ -165,3 +165,6 @@ PAYFAST_MERCHANT_KEY = os.getenv('PAYFAST_MERCHANT_KEY')
 # if local_ip == "178.128.171.157":
 #     DEBUG = False
 #     print("Deploying to staging...")
+
+ADMIN_EMAIL = "ptchankue@gmail.com"
+OWNER_EMAIL = "ptchankue@gmail.com"
