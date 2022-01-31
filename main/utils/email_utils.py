@@ -28,10 +28,10 @@ class EmailUtil(object):
             data = {
                 "personalizations": [
                     {
-                        "to": [{"email": "ptchankue@gmail.com"}]
+                        "to": [{"email": settings.OWNER_EMAIL}]
                     }
                 ],
-                "from": {"email": "Bella Books <ptchankue@gmail.com>"},
+                "from": {"email": f"Bella Books Contact <{settings.ADMIN_EMAIL}>"},
                 "subject": f"Bella Books Contact Form: {contact.email}",
 
                 "content": [
