@@ -100,7 +100,7 @@ def update_user_profile(sender, instance, created, **kwargs):
 
 class RequestLog(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
-    ip_address = models.IPAddressField()
+    ip_address = models.GenericIPAddressField()
     input = models.TextField()
     output = models.TextField()
     response_code = models.IntegerField(default=0)

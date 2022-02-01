@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from main.models import Book, Contact
+from main.models import Book, Contact, RequestLog
 
 
 @admin.register(Book)

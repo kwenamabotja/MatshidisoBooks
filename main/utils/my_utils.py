@@ -1,11 +1,9 @@
 import json
 import logging
+import datetime
 
-import requests
 from django.utils import timezone
 
-from bellabooks import settings
-from bellabooks.settings import SENDGRID_TOKEN, SENDGRID_URL
 from main.models import RequestLog
 
 logger = logging.getLogger(__name__)
@@ -30,6 +28,6 @@ class MyUtil(object):
         )
         c.output = output
         c.response_code = response_code
-        c.duration = timezone.now() - c.created_at
+        c.duration = (timezone.now() - c.created_at).microseconds
         c.save()
         return c.pk

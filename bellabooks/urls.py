@@ -18,8 +18,9 @@ from django.conf.urls.static import static
 from django.urls import path, include
 
 from bellabooks import settings
+from main.views import core_views
 from main.views.api_views import AddressViewSet
-from main.views import HomePageView, PaymentView, OrderBookView, core_views
+from main.views.views import HomePageView, PaymentView, OrderBookView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
