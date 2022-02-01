@@ -28,6 +28,6 @@ class MyUtil(object):
         )
         c.output = output
         c.response_code = response_code
-        c.duration = (timezone.now() - c.created_at).microseconds
+        c.duration = (timezone.now() - c.created_at).seconds
         c.save()
         return c.pk
