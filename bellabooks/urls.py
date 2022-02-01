@@ -18,9 +18,8 @@ from django.conf.urls.static import static
 from django.urls import path, include
 
 from bellabooks import settings
-from main import core_views
-from main.api_views import AddressViewSet
-from main.views import HomePageView, PaymentView, OrderBookView
+from main.views.api_views import AddressViewSet
+from main.views import HomePageView, PaymentView, OrderBookView, core_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,7 +31,7 @@ urlpatterns = [
 
     path('account-activation-sent', core_views.account_activation_sent, name='account_activation_sent'),
     path('activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})',
-        core_views.activate, name='activate'),
+         core_views.activate, name='activate'),
     path('signup', core_views.signup, name='signup'),
 
     path('api/addresses', AddressViewSet.as_view({'get': 'retrieve'}), name='addresses'),

@@ -101,11 +101,11 @@ def update_user_profile(sender, instance, created, **kwargs):
 class RequestLog(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     ip_address = models.IPAddressField()
-    request = models.TextField()
-    response = models.TextField()
+    input = models.TextField()
+    output = models.TextField()
     response_code = models.IntegerField(default=0)
     duration = models.IntegerField(default=0)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"Request: {self.request} \n Response: {self.response} \n  Code: {self.response_code}"
+        return f"Request: {self.input} \n Response: {self.output} \n  Code: {self.response_code}"
