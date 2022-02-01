@@ -96,3 +96,16 @@ def update_user_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
     instance.profile.save()
+
+
+class RequestLog(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    ip_address = models.IPAddressField()
+    request = models.TextField()
+    response = models.TextField()
+    response_code = models.IntegerField(default=0)
+    duration = models.IntegerField(default=0)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"Request: {self.request} \n Response: {self.response} \n  Code: {self.response_code}"

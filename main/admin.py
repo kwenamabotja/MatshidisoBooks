@@ -11,4 +11,9 @@ class BookAdmin(admin.ModelAdmin):
 
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
-    """Custom admin class for book model."""
+    """Custom admin class for contact model."""
+
+
+@admin.register(RequestLog)
+class RequestLogAdmin(admin.ModelAdmin):
+    """Custom admin class for request log model."""
